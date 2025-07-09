@@ -1,5 +1,6 @@
-require("dotenv").config();
 import { z } from "zod";
+
+require("dotenv").config();
 
 const envSchema = z.object({
   // Server configuration
