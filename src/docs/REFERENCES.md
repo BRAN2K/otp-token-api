@@ -5,12 +5,15 @@ This document contains all the references and resources that were utilized throu
 ## Documentation
 
 - [Zod](https://zod.dev/) - TypeScript-first schema declaration and validation library
+- [Biome](https://biomejs.dev/) - A modern JavaScript and TypeScript linter, formatter, and bundler
+- [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
 
 ## Articles and Tutorials
 
 - [Validating Data With Zod](https://dev.to/osalumense/validating-request-data-in-expressjs-using-zod-a-comprehensive-guide-3a0j) - A comprehensive guide on how to validate request data in Express.js using Zod.
 - [Implementing OTP Verification in Express.js](https://sandydev.medium.com/how-to-implement-otp-verification-in-authentication-system-with-express-js-and-mongodb-c4f1c1314aed) - A guide on implementing OTP verification in an authentication system with Express.js and MongoDB.
 - [Hexagonal Architecture Project](https://www.youtube.com/watch?v=DWsxTJpxaOo) - A YouTube video explaining the Hexagonal Architecture in a Node.js project by Rodrigo Branas.
+- [Use Biome in React Typescript Application](https://www.youtube.com/watch?v=OuJ8IxSm1DI) - A YouTube video tutorial on how to use Biome in a React TypeScript application.
 
 ---
 
