@@ -7,6 +7,7 @@ This document contains all the references and resources that were utilized throu
 - [Zod](https://zod.dev/) - TypeScript-first schema declaration and validation library
 - [Biome](https://biomejs.dev/) - A modern JavaScript and TypeScript linter, formatter, and bundler
 - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+- [Prisma](https://www.prisma.io/) - Database ORM for Node.js and TypeScript
 
 ## Articles and Tutorials
 

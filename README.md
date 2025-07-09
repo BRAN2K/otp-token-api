@@ -9,6 +9,7 @@ REST API to manage OTP tokens
 - Node.js (v24.1.0)
 - pnpm (You can use any `package manager`)
 - Podman (You can use any `docker` engine)
+- DataGrip (optional, for database management)
 
 ### Running in Development Mode
 
@@ -38,13 +39,41 @@ cp docs/.env.example .env
 podman compose -p otp-token-api -f docker/docker-compose.db.yaml --env-file=.env up -d
 ```
 
-5. Start the development server
+5. Generate Prisma client
+
+```bash
+npx prisma generate
+```
+
+`OR`
+
+````bash
+
+6. Push database schema
+
+```bash
+npx prisma db push
+````
+
+7. Start the development server
 
 ```bash
 pnpm run dev
 ```
 
 The API will be available at `http://localhost:8080` by default.
+
+## Database Management
+
+You can use DataGrip or any other database management tool to connect to the PostgreSQL database, using same values as in the `.env` file that you configured.
+
+`OR`
+
+You can use the Prisma CLI to manage the database:
+
+```bash
+npx prisma studio
+```
 
 ## Notes
 
