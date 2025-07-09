@@ -1,0 +1,17 @@
+# References
+
+This document contains all the references and resources that were utilized throughout the development of the OTP Token API project.
+
+## Documentation
+
+- [Zod](https://zod.dev/) - TypeScript-first schema declaration and validation library
+
+## Articles and Tutorials
+
+- [Validating Data With Zod](https://dev.to/osalumense/validating-request-data-in-expressjs-using-zod-a-comprehensive-guide-3a0j) - A comprehensive guide on how to validate request data in Express.js using Zod.
+- [Implementing OTP Verification in Express.js](https://sandydev.medium.com/how-to-implement-otp-verification-in-authentication-system-with-express-js-and-mongodb-c4f1c1314aed) - A guide on implementing OTP verification in an authentication system with Express.js and MongoDB.
+- [Hexagonal Architecture Project](https://www.youtube.com/watch?v=DWsxTJpxaOo) - A YouTube video explaining the Hexagonal Architecture in a Node.js project by Rodrigo Branas.
+
+---
+
+_This document will be updated as additional resources are utilized during the project development._
