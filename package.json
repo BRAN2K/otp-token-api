@@ -11,7 +11,7 @@
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push",
     "db:pull": "npx prisma db pull",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Guilherme Brante Cavequia (BRAN2K)",
@@ -26,7 +26,10 @@
   "devDependencies": {
     "@biomejs/biome": "2.1.1",
     "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.4",
     "prisma": "^6.11.1",
+    "ts-jest": "^29.4.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }

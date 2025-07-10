@@ -8,6 +8,7 @@ This document contains all the references and resources that were utilized throu
 - [Biome](https://biomejs.dev/) - A modern JavaScript and TypeScript linter, formatter, and bundler
 - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
 - [Prisma](https://www.prisma.io/) - Database ORM for Node.js and TypeScript
+- [Jest](https://jestjs.io/) - JavaScript Testing Framework
 
 ## Articles and Tutorials
 
