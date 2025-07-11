@@ -9,12 +9,11 @@ export interface OtpToken {
 
 export interface CreateOtpTokenData {
   userId: string;
-  expiresInMinutes?: number;
+  expiresAt: Date;
+  token: string;
 }
 
-export interface OtpTokenValidationResult {
+export interface VerifyOtpTokenResult {
   isValid: boolean;
-  isExpired: boolean;
-  isUsed: boolean;
   error?: string;
 }

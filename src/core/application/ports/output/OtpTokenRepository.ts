@@ -5,8 +5,9 @@ import type {
 
 export interface OtpTokenRepository {
   create(data: CreateOtpTokenData): Promise<OtpToken>;
+  findById(tokenId: string): Promise<OtpToken>;
   findByUserId(userId: string): Promise<OtpToken[]>;
-  markAsUsed(id: string): Promise<OtpToken>;
+  markAsUsed(tokenId: string): Promise<OtpToken>;
   deleteExpired(): Promise<number>;
-  deleteById(id: string): Promise<void>;
+  deleteById(tokenId: string): Promise<boolean>;
 }

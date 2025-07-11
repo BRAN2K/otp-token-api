@@ -1,5 +1,5 @@
-import type { OtpTokenValidationResult } from "@/core/domain/entities/OtpToken";
+import type { VerifyOtpTokenResult } from "@/core/domain/entities/OtpToken";
 
 export interface VerifyOtpTokenPort {
-  execute(token: string): Promise<OtpTokenValidationResult>;
+  execute(tokenId: string): Promise<VerifyOtpTokenResult>;
 }
