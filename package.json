@@ -11,7 +11,7 @@
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push",
     "db:pull": "npx prisma db pull",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "Guilherme Brante Cavequia (BRAN2K)",
