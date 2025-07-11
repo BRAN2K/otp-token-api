@@ -1,7 +1,4 @@
-import type {
-  OtpToken,
-  VerifyOtpTokenResult,
-} from "@/core/domain/entities/OtpToken";
+import type { VerifyOtpTokenResult } from "@/core/domain/entities/OtpToken";
 import { isExpired } from "@/core/shared/utils/date";
 import type { VerifyOtpTokenPort } from "../ports/input/VerifyOtpTokenPort";
 import type { OtpTokenRepository } from "../ports/output/OtpTokenRepository";
@@ -11,7 +8,7 @@ export class VerifyOtpTokenUseCase implements VerifyOtpTokenPort {
 
   async execute(tokenId: string): Promise<VerifyOtpTokenResult> {
     // Buscar token no repositório
-    const otpToken: OtpToken = await this.otpTokenRepository.findById(tokenId);
+    const otpToken = await this.otpTokenRepository.findById(tokenId);
     if (!otpToken) {
       return {
         isValid: false,
