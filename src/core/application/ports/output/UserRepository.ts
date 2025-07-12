@@ -1,8 +1,8 @@
 import type { CreateUserData, User } from "@/core/domain/entities/User";
 
 export interface UserRepository {
-  findById(id: string): Promise<User | null>;
-  findByEmail(email: string): Promise<User | null>;
-  create(data: CreateUserData): Promise<User>;
-  update(id: string, data: Partial<CreateUserData>): Promise<User>;
+  findById(userId: string): Promise<User | null>;
+  findByEmail(userEmail: string): Promise<User | null>;
+  create(userData: CreateUserData): Promise<User>;
+  update(userId: string, userData: Partial<CreateUserData>): Promise<User>;
 }
