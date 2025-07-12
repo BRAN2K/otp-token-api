@@ -1,37 +1,19 @@
 import type { NextFunction, Request, Response } from "express";
 import { pinoHttp } from "pino-http";
-import { uuid } from "zod/v4";
+import { v4 as uuidv4 } from "uuid";
 import { logger } from "@/config/logger";
 
 const pinoHttpMiddleware = pinoHttp({
   logger: logger,
   genReqId: (_req: Request, _res: Response) => {
-    return `req_${Date.now()}_${uuid()}`;
-  },
-
-  customProps: (req: Request, _res: Response) => {
-    return {
-      ip: getClientIp(req),
-    };
+    return `req_${Date.now()}_${uuidv4()}`;
   },
 });
-
-function getClientIp(req: Request): string {
-  return (
-    req.get("X-Forwarded-For")?.split(",")[0]?.trim() ||
-    req.get("X-Real-IP") ||
-    req.socket.remoteAddress ||
-    req.ip ||
-    "unknown"
-  );
-}
 
 export const requestLogger = (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   return pinoHttpMiddleware(req, res, next);
 };
-
-export { logger };
