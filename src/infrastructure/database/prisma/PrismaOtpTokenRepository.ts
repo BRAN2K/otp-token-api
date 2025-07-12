@@ -8,12 +8,12 @@ import type { PrismaClient } from "./PrismaClient";
 export class PrismaOtpTokenRepository implements OtpTokenRepository {
   constructor(private prisma: PrismaClient) {}
 
-  async create(data: CreateOtpTokenData): Promise<OtpToken> {
+  async create(tokenData: CreateOtpTokenData): Promise<OtpToken> {
     const otpToken = await this.prisma.otpVerification.create({
       data: {
-        token: data.token,
-        userId: data.userId,
-        expiresAt: data.expiresAt,
+        token: tokenData.token,
+        userId: tokenData.userId,
+        expiresAt: tokenData.expiresAt,
       },
     });
 

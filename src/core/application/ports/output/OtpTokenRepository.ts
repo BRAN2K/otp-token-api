@@ -4,7 +4,7 @@ import type {
 } from "@/core/domain/entities/OtpToken";
 
 export interface OtpTokenRepository {
-  create(data: CreateOtpTokenData): Promise<OtpToken>;
+  create(tokenData: CreateOtpTokenData): Promise<OtpToken>;
   findById(tokenId: string): Promise<OtpToken | null>;
   findByUserId(userId: string): Promise<OtpToken[]>;
   markAsUsed(tokenId: string): Promise<void>;
