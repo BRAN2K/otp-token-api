@@ -1,14 +1,10 @@
-import express, { type Request, type Response } from "express";
 import { env } from "@/config/env";
+import { logger } from "@/config/logger";
+import { createApp } from "./app";
 
-const app = express();
-
-app.use(express.json());
-
-app.get("/", (_req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+const app = createApp();
 
 app.listen(env.PORT, () => {
-  console.log(`Server running at ${env.HOST}:${env.PORT}`);
+  logger.info(`Server running at ${env.HOST}:${env.PORT}`);
+  logger.info(`Environment: ${env.NODE_ENV}`);
 });
