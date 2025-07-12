@@ -18,14 +18,16 @@ describe("RevokeOtpTokenUseCase", () => {
   });
 
   it("deve lançar exceção se token não for encontrado", async () => {
-    otpTokenRepository.deleteById.mockResolvedValue(false);
+    otpTokenRepository.deleteById.mockRejectedValue(
+      new Error("Token não encontrado"),
+    );
     await expect(useCase.execute("token-id")).rejects.toThrow(
-      new ValidationException("Token não encontrado"),
+      new ValidationException("Erro ao revogar o token OTP"),
     );
   });
 
   it("deve revogar token com sucesso", async () => {
-    otpTokenRepository.deleteById.mockResolvedValue(true);
+    otpTokenRepository.deleteById.mockResolvedValue();
     await expect(useCase.execute("token-id")).resolves.toBeUndefined();
     expect(otpTokenRepository.deleteById).toHaveBeenCalledWith("token-id");
   });

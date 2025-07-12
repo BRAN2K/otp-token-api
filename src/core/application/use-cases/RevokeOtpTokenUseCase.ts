@@ -10,10 +10,10 @@ export class RevokeOtpTokenUseCase implements RevokeOtpTokenPort {
       throw new ValidationException("ID do token é obrigatório");
     }
 
-    const deleted = await this.otpTokenRepository.deleteById(tokenId);
-
-    if (!deleted) {
-      throw new ValidationException("Token não encontrado");
+    try {
+      await this.otpTokenRepository.deleteById(tokenId);
+    } catch {
+      throw new ValidationException("Erro ao revogar o token OTP");
     }
   }
 }

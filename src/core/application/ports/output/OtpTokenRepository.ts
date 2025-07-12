@@ -9,5 +9,5 @@ export interface OtpTokenRepository {
   findByUserId(userId: string): Promise<OtpToken[]>;
   markAsUsed(tokenId: string): Promise<void>;
   deleteExpired(): Promise<number>;
-  deleteById(tokenId: string): Promise<boolean>;
+  deleteById(tokenId: string): Promise<void>;
 }
