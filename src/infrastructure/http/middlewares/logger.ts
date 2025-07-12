@@ -1,26 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
-import { pino } from "pino";
 import { pinoHttp } from "pino-http";
 import { uuid } from "zod/v4";
-import { env, isDevelopment } from "@/config/env";
-
-const logger = pino({
-  level: isDevelopment ? "debug" : "info",
-  transport: isDevelopment
-    ? {
-        target: "pino-pretty",
-        options: {
-          colorize: true,
-          translateTime: "SYS:standard",
-          ignore: "pid,hostname",
-        },
-      }
-    : undefined,
-  base: {
-    env: env.NODE_ENV,
-  },
-  timestamp: true,
-});
+import { logger } from "@/config/logger";
 
 const pinoHttpMiddleware = pinoHttp({
   logger: logger,
