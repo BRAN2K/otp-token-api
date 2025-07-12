@@ -1,4 +1,5 @@
 import type { VerifyOtpTokenResult } from "@/core/domain/entities/OtpToken";
+import { ValidationException } from "@/core/domain/exceptions/ValidationException";
 import { isExpired } from "@/core/shared/utils/date";
 import type { VerifyOtpTokenPort } from "../ports/input/VerifyOtpTokenPort";
 import type { OtpTokenRepository } from "../ports/output/OtpTokenRepository";
@@ -32,8 +33,11 @@ export class VerifyOtpTokenUseCase implements VerifyOtpTokenPort {
       };
     }
 
-    // Marcar como usado
-    await this.otpTokenRepository.markAsUsed(otpToken.id);
+    try {
+      await this.otpTokenRepository.markAsUsed(otpToken.id);
+    } catch {
+      throw new ValidationException("Erro ao marcar o token como utilizado");
+    }
 
     return {
       isValid: true,

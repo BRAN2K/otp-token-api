@@ -2,6 +2,7 @@ import { mock } from "jest-mock-extended";
 import type { OtpTokenRepository } from "@/core/application/ports/output/OtpTokenRepository";
 import { VerifyOtpTokenUseCase } from "@/core/application/use-cases/VerifyOtpTokenUseCase";
 import type { OtpToken } from "@/core/domain/entities/OtpToken";
+import { ValidationException } from "@/core/domain/exceptions/ValidationException";
 
 describe("VerifyOtpTokenUseCase", () => {
   const otpTokenRepository = mock<OtpTokenRepository>();
@@ -63,5 +64,24 @@ describe("VerifyOtpTokenUseCase", () => {
     const result = await useCase.execute(mockOtpToken.id);
     expect(result.isValid).toBe(true);
     expect(otpTokenRepository.markAsUsed).toHaveBeenCalledWith(mockOtpToken.id);
+  });
+
+  it("deve lançar exceção se falhar ao marcar token como utilizado", async () => {
+    const mockOtpToken: OtpToken = {
+      id: "token-id",
+      token: "123456",
+      userId: "user-id",
+      expiresAt: new Date(Date.now() + 10000),
+      createdAt: new Date(),
+    };
+
+    otpTokenRepository.findById.mockResolvedValue(mockOtpToken);
+    otpTokenRepository.markAsUsed.mockRejectedValue(
+      new Error("Erro de conexão"),
+    );
+
+    await expect(useCase.execute(mockOtpToken.id)).rejects.toThrow(
+      new ValidationException("Erro ao marcar o token como utilizado"),
+    );
   });
 });
