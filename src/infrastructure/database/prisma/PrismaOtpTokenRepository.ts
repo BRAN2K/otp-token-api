@@ -28,8 +28,8 @@ export class PrismaOtpTokenRepository implements OtpTokenRepository {
   }
 
   async findById(tokenId: string): Promise<OtpToken | null> {
-    const otpToken = await this.prisma.otpVerification.findFirst({
-      where: { token: tokenId },
+    const otpToken = await this.prisma.otpVerification.findUnique({
+      where: { id: tokenId },
     });
 
     if (!otpToken) return null;
