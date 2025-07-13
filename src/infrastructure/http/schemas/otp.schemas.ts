@@ -9,7 +9,8 @@ export const createOtpTokenSchema = z.object({
 
 export const verifyOtpTokenSchema = z.object({
   body: z.object({
-    tokenId: z.string().uuid("ID do token deve ser um UUID válido"),
+    userId: z.string().uuid("ID do usuário deve ser um UUID válido"),
+    token: z.string().regex(/^\d{6}$/, "O token deve ter exatamente 6 números"),
   }),
 });
 

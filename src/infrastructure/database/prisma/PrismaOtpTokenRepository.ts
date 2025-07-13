@@ -59,6 +59,31 @@ export class PrismaOtpTokenRepository implements OtpTokenRepository {
     }));
   }
 
+  async findByTokenAndUser(
+    userId: string,
+    token: string,
+  ): Promise<OtpToken | null> {
+    const otpToken = await this.prisma.otpVerification.findUnique({
+      where: {
+        userId_token: {
+          userId: userId,
+          token: token,
+        },
+      },
+    });
+
+    if (!otpToken) return null;
+
+    return {
+      id: otpToken.id,
+      token: otpToken.token,
+      userId: otpToken.userId,
+      expiresAt: otpToken.expiresAt,
+      usedAt: otpToken.usedAt || undefined,
+      createdAt: otpToken.createdAt,
+    };
+  }
+
   async markAsUsed(tokenId: string): Promise<void> {
     await this.prisma.otpVerification.update({
       where: { id: tokenId },

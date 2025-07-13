@@ -32,7 +32,6 @@ model OtpVerification {
 	userId    String
 	user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-	@@index([token], name: "otp_verification_token_key")
-
+	@@unique([userId, token])
 	@@map("otp_verifications")
 }

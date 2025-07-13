@@ -39,9 +39,9 @@ export class OtpTokenController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const { tokenId } = req.body;
+      const { userId, token } = req.body;
 
-      const result = await this.verifyOtpTokenPort.execute(tokenId);
+      const result = await this.verifyOtpTokenPort.execute(userId, token);
 
       res.status(200).json({
         success: true,

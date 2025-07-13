@@ -13,8 +13,8 @@ describe("VerifyOtpTokenUseCase", () => {
   });
 
   it("deve retornar inválido se token não for encontrado", async () => {
-    otpTokenRepository.findById.mockResolvedValue(null);
-    const result = await useCase.execute("token-id");
+    otpTokenRepository.findByTokenAndUser.mockResolvedValue(null);
+    const result = await useCase.execute("user-id", "123456");
     expect(result.isValid).toBe(false);
     expect(result.error).toBe("Token inválido");
   });
@@ -29,8 +29,11 @@ describe("VerifyOtpTokenUseCase", () => {
       usedAt: new Date(Date.now() + 5000),
     };
 
-    otpTokenRepository.findById.mockResolvedValue(mockOtpToken);
-    const result = await useCase.execute(mockOtpToken.id);
+    otpTokenRepository.findByTokenAndUser.mockResolvedValue(mockOtpToken);
+    const result = await useCase.execute(
+      mockOtpToken.userId,
+      mockOtpToken.token,
+    );
     expect(result.isValid).toBe(false);
     expect(result.error).toBe("Token já foi utilizado");
   });
@@ -44,8 +47,11 @@ describe("VerifyOtpTokenUseCase", () => {
       createdAt: new Date(),
     };
 
-    otpTokenRepository.findById.mockResolvedValue(mockOtpToken);
-    const result = await useCase.execute(mockOtpToken.id);
+    otpTokenRepository.findByTokenAndUser.mockResolvedValue(mockOtpToken);
+    const result = await useCase.execute(
+      mockOtpToken.userId,
+      mockOtpToken.token,
+    );
     expect(result.isValid).toBe(false);
     expect(result.error).toBe("Token expirado");
   });
@@ -59,9 +65,12 @@ describe("VerifyOtpTokenUseCase", () => {
       createdAt: new Date(),
     };
 
-    otpTokenRepository.findById.mockResolvedValue(mockOtpToken);
+    otpTokenRepository.findByTokenAndUser.mockResolvedValue(mockOtpToken);
     otpTokenRepository.markAsUsed.mockResolvedValue();
-    const result = await useCase.execute(mockOtpToken.id);
+    const result = await useCase.execute(
+      mockOtpToken.userId,
+      mockOtpToken.token,
+    );
     expect(result.isValid).toBe(true);
     expect(otpTokenRepository.markAsUsed).toHaveBeenCalledWith(mockOtpToken.id);
   });
@@ -75,12 +84,14 @@ describe("VerifyOtpTokenUseCase", () => {
       createdAt: new Date(),
     };
 
-    otpTokenRepository.findById.mockResolvedValue(mockOtpToken);
+    otpTokenRepository.findByTokenAndUser.mockResolvedValue(mockOtpToken);
     otpTokenRepository.markAsUsed.mockRejectedValue(
       new Error("Erro de conexão"),
     );
 
-    await expect(useCase.execute(mockOtpToken.id)).rejects.toThrow(
+    await expect(
+      useCase.execute(mockOtpToken.userId, mockOtpToken.token),
+    ).rejects.toThrow(
       new ValidationException("Erro ao marcar o token como utilizado"),
     );
   });
