@@ -25,7 +25,7 @@ export function createOtpRoutes(
   );
 
   router.delete(
-    "/:id",
+    "/revoke/:tokenId",
     validateRequest(revokeOtpTokenSchema),
     OtpTokenController.revokeToken.bind(OtpTokenController),
   );

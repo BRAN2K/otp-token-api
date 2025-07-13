@@ -58,9 +58,9 @@ export class OtpTokenController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const { id } = req.params;
+      const { tokenId } = req.params;
 
-      await this.revokeOtpTokenPort.execute(id);
+      await this.revokeOtpTokenPort.execute(tokenId);
 
       res.status(200).json({
         success: true,
