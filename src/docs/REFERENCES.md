@@ -21,6 +21,7 @@ This document contains all the references and resources that were utilized throu
 - [Implementing OTP Verification in Express.js](https://sandydev.medium.com/how-to-implement-otp-verification-in-authentication-system-with-express-js-and-mongodb-c4f1c1314aed) - A guide on implementing OTP verification in an authentication system with Express.js and MongoDB.
 - [Hexagonal Architecture Project](https://www.youtube.com/watch?v=DWsxTJpxaOo) - A YouTube video explaining the Hexagonal Architecture in a Node.js project by Rodrigo Branas.
 - [Use Biome in React Typescript Application](https://www.youtube.com/watch?v=OuJ8IxSm1DI) - A YouTube video tutorial on how to use Biome in a React TypeScript application.
+- [Deploy Pipeline on AWS EC2 With Github Actions](https://www.youtube.com/watch?v=BDGTIM8fTUc) - A YouTube video tutorial on how to deploy a CI/CD pipeline on AWS EC2 using GitHub Actions.
 
 ---
 

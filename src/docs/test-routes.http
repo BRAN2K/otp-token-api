@@ -1,0 +1,21 @@
+### Create a new OTP token
+POST http://ec2-18-188-70-70.us-east-2.compute.amazonaws.com/api/otp/create
+Content-Type: application/json
+
+{
+	"userId": "3bde052e-b870-4388-a55a-b55517a21666",
+	"expiresInMinutes": 5
+}
+
+### Verify an OTP token
+POST http://ec2-18-188-70-70.us-east-2.compute.amazonaws.com/api/otp/verify
+Content-Type: application/json
+
+{
+	"userId": "3bde052e-b870-4388-a55a-b55517a21666",
+	"token": "898040"
+}
+
+### Health
+
+GET http://ec2-18-188-70-70.us-east-2.compute.amazonaws.com/api/health

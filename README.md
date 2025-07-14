@@ -105,6 +105,10 @@ The Dockerfile is used to build the production image of the API. It uses a multi
 
 The Docker image is pushed to Dockerhub under the repository `brindocker/otp-pipeline`. The pipeline is configured in `.github/workflows/docker-image.yml`.
 
+### AWS EC2
+
+When the image is already on Dockerhub, this image is pulled and run on an AWS EC2 instance. The deployment is managed by a GitHub Actions workflow located at `.github/workflows/aws-cd.yml`. In the EC2 instance, the Docker container is run with the necessary environment variables, including the `DATABASE_URL` for connecting to the PostgreSQL database and exposed via NGINX to external traffic on port 8080.
+
 ### NektosAct
 
 [NektosAct or only Act](https://nektosact.com/usage/index.html), is a tool that allows you to run GitHub Actions locally. It is useful for testing workflows before pushing them to the repository.
@@ -135,3 +139,4 @@ To customize the token expiration time, you can pass a `expiresInMinutes` body p
 - Add more tests, to cover infrastructure layer for example.
 - Implement a more robust error handling mechanism.
 - Send token a notification service as an email or SMS.
+- Add a step on CI/CD pipeline to run tests before deploying to production.
