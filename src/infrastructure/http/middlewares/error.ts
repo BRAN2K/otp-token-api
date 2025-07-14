@@ -1,11 +1,11 @@
-import { DomainException } from "@/core/domain/exceptions/DomainException";
 import type { NextFunction, Request, Response } from "express";
+import { DomainException } from "@/core/domain/exceptions/DomainException";
 
 export const errorHandler = (
   error: unknown,
   _req: Request,
   res: Response,
-  _next: NextFunction
+  _next: NextFunction,
 ) => {
   if (error instanceof DomainException) {
     return res.status(error.statusCode).json({

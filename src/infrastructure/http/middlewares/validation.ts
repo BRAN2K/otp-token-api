@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import { ZodError, type z } from "zod";
 
 export const validateRequest = <T extends z.ZodRawShape>(
-  schema: z.ZodObject<T>
+  schema: z.ZodObject<T>,
 ) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {

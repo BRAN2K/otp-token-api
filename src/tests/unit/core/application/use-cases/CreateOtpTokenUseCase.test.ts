@@ -17,7 +17,7 @@ describe("CreateOtpTokenUseCase", () => {
 
   it("deve lançar exceção se userId não for informado", async () => {
     await expect(useCase.execute("")).rejects.toThrow(
-      new ValidationException("ID do usuário é obrigatório")
+      new ValidationException("ID do usuário é obrigatório"),
     );
   });
 
@@ -32,21 +32,21 @@ describe("CreateOtpTokenUseCase", () => {
     userRepository.findById.mockResolvedValue(mockUser);
     await expect(useCase.execute(mockUser.id, 0)).rejects.toThrow(
       new ValidationException(
-        "Tempo de expiração deve estar entre 1 e 60 minutos"
-      )
+        "Tempo de expiração deve estar entre 1 e 60 minutos",
+      ),
     );
 
     await expect(useCase.execute(mockUser.id, 61)).rejects.toThrow(
       new ValidationException(
-        "Tempo de expiração deve estar entre 1 e 60 minutos"
-      )
+        "Tempo de expiração deve estar entre 1 e 60 minutos",
+      ),
     );
   });
 
   it("deve lançar exceção se usuário não for encontrado", async () => {
     userRepository.findById.mockResolvedValue(null);
     await expect(useCase.execute("user-id", 10)).rejects.toThrow(
-      new ValidationException("Usuário não encontrado")
+      new ValidationException("Usuário não encontrado"),
     );
   });
 

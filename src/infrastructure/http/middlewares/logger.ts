@@ -13,7 +13,7 @@ const pinoHttpMiddleware = pinoHttp({
 export const requestLogger = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   return pinoHttpMiddleware(req, res, next);
 };
