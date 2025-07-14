@@ -83,6 +83,28 @@ You can use the Prisma CLI to manage the database:
 pnpm run db:studio
 ```
 
+## Production Setup
+
+### Database
+
+This configuration establishes a connection to a database hosted on Neon DB,
+
+#### Database setup process:
+
+1.  Created database on Neon DB platform
+2.  Used Prisma's `db:push` command locally to manually create tables
+3.  Connection is established via Prisma Client using the DATABASE_URL from environment variables
+
+### Docker
+
+#### Dockerfile
+
+The Dockerfile is used to build the production image of the API. It uses a multi-stage build to ensure a small final image size. The dockerfile is located at `docker/Dockerfile`.
+
+#### Dockerhub
+
+The Docker image is pushed to Dockerhub under the repository `brindocker/otp-pipeline`. The pipeline is configured in `.github/workflows/docker-image.yml`.
+
 ## Notes
 
 ### How to Customize Token Expiration Time
