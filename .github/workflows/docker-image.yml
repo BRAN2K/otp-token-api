@@ -19,11 +19,7 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build the Docker image
-        env:
-          ENV: $ENV
-          PORT: $PORT
-          HOST: $HOST
-          DATABASE_URL: ${{secrets.DATABASE_URL}}
         run: docker build -t brindocker/otp-pipeline:latest -f docker/Dockerfile .
+
       - name: Push to Dockerhub
         run: docker push brindocker/otp-pipeline:latest
