@@ -70,6 +70,11 @@ web_modules/
 .env.*
 !.env.example
 
+# secret files to test locally ci/cd pipelines
+my.secrets
+my.secrets.*
+!my.secrets.example
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

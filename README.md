@@ -105,6 +105,11 @@ The Dockerfile is used to build the production image of the API. It uses a multi
 
 The Docker image is pushed to Dockerhub under the repository `brindocker/otp-pipeline`. The pipeline is configured in `.github/workflows/docker-image.yml`.
 
+### NektosAct
+
+[NektosAct or only Act](https://nektosact.com/usage/index.html), is a tool that allows you to run GitHub Actions locally. It is useful for testing workflows before pushing them to the repository.
+my.secrets file is used to store sensitive information like database credentials, API keys, etc.
+
 ## Notes
 
 ### How to Customize Token Expiration Time
