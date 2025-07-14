@@ -26,6 +26,12 @@ cd otp-token-api
 pnpm install
 ```
 
+`OR`
+
+```bash
+npm install
+```
+
 3. Set up environment variables
 
 ```bash
@@ -39,21 +45,23 @@ cp docs/.env.example .env
 podman compose -p otp-token-api -f docker/docker-compose.db.yaml --env-file=.env up -d
 ```
 
+`OR`
+
+```bash
+docker compose -p otp-token-api -f docker/docker-compose.db.yaml --env-file=.env up -d
+```
+
 5. Generate Prisma client
 
 ```bash
-npx prisma generate
+pnpm run db:generate
 ```
-
-`OR`
-
-````bash
 
 6. Push database schema
 
 ```bash
-npx prisma db push
-````
+pnpm run db:push
+```
 
 7. Start the development server
 
@@ -61,7 +69,7 @@ npx prisma db push
 pnpm run dev
 ```
 
-The API will be available at `http://localhost:8080` by default.
+The API will be available at `http://localhost:8080` by default if you dont have modified `HOST` or `PORT` env vars.
 
 ## Database Management
 
@@ -72,9 +80,31 @@ You can use DataGrip or any other database management tool to connect to the Pos
 You can use the Prisma CLI to manage the database:
 
 ```bash
-npx prisma studio
+pnpm run db:studio
 ```
 
 ## Notes
 
-\#TODO Write about my choices along the project, such as why express, postgres, architecture, etc.
+### How to Customize Token Expiration Time
+
+To customize the token expiration time, you can pass a `expiresInMinutes` body param when creating a new token. If you don't specify this parameter, the default expiration time is set to 10 minutes.
+
+### Technologies Used in This Project
+
+- **Express.js**: Even though Express is not being updated as frequently nowadays, I chose to use it because of its simplicity, which makes it great for writing MVPs quickly. Additionally, I already have experience with Express, which helps speed up development and reduces the learning curve.
+- **PostgreSQL**: Chosen as the main relational database because it's straightforward to use and I've worked extensively with it in the past.
+- **Prisma ORM**: Prisma is used as the database toolkit and ORM. It provides type-safe database access, easy migrations, and a great developer experience with autocompletion and schema validation.
+- **pnpm**: Selected as the package manager for its speed compared to npm.
+- **Podman**: Used instead of Docker because if free to use in corporative enviroments and I usually use in my routine.
+- **Swagger (swagger-ui-express)**: Integrated for automatic API documentation, making it easy to explore and test endpoints directly from the browser.
+- **Jest**: Used for unit and integration testing to ensure code reliability and correctness. Chosen because I used it in previous projects.
+- **Biome**: A modern linter and formatter that helps maintain code quality and consistency. It was chosen because I was having issues with ESLint and Prettier, and Biome provides a unified solution for both linting and formatting, what worked well in this project.
+- **Zod**: Used for schema validation, providing a type-safe way to validate request and response data. It integrates well with TypeScript and enhances the overall type safety of the API.
+- **Pino**: Quick to setup and provides structured logging, which is essential for debugging and monitoring the API.
+
+### Next Steps
+
+- Implement rate limiting to prevent abuse of the API.
+- Add more tests, to cover infrastructure layer for example.
+- Implement a more robust error handling mechanism.
+- Send token a notification service as an email or SMS.

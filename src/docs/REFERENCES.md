@@ -9,6 +9,11 @@ This document contains all the references and resources that were utilized throu
 - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
 - [Prisma](https://www.prisma.io/) - Database ORM for Node.js and TypeScript
 - [Jest](https://jestjs.io/) - JavaScript Testing Framework
+- [TS Jest](https://www.npmjs.com/package/ts-jest) - A Jest transformer with TypeScript support
+- [Jest Mock Extended](https://www.npmjs.com/package/jest-mock-extended) - Type safe mocking extensions for Jest
+- [Pino](https://github.com/pinojs/pino) - Fast logger for Node.js
+- [Swagger UI Express](https://www.npmjs.com/package/swagger-ui-express) - Middleware for serving Swagger UI in Express applications
+-
 
 ## Articles and Tutorials
 

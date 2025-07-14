@@ -13,6 +13,7 @@
     "db:generate": "npx prisma generate",
     "db:push": "npx prisma db push",
     "db:pull": "npx prisma db pull",
+    "db:studio": "npx prisma studio",
     "test": "jest --verbose",
     "test:core": "jest ./src/tests/unit/core --verbose"
   },
