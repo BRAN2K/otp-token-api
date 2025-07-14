@@ -16,16 +16,10 @@ jobs:
         run: sudo docker rm -f otp-pipeline-container || true
       - name: Run Docker Container
         env:
-          ENV: $ENV
-          PORT: $PORT
-          HOST: $HOST
           DATABASE_URL: ${{secrets.DATABASE_URL}}
         run: |
           sudo docker run -d \
             --name otp-pipeline-container \
             -e DATABASE_URL="$DATABASE_URL" \
-            -e NODE_ENV="$NODE_ENV" \
-            -e PORT="$PORT" \
-            -e HOST="$HOST" \
             -p 8080:8080 \
             brindocker/otp-pipeline:latest
